@@ -22,7 +22,13 @@ export default function App() {
   const [dataLoaded, setDataLoaded] = useState(false);
 
   if (!dataLoaded) {
-    return <AppLoading startAsync={fetchFonts} onFinish={() => setDataLoaded(true)} onError={(err)=> console.log(err)}/>;
+    return (
+      <AppLoading
+        startAsync={fetchFonts}
+        onFinish={() => setDataLoaded(true)}
+        onError={(err) => console.log(err)}
+      />
+    );
   }
 
   const configureNewGameHandler = () => {
@@ -38,7 +44,14 @@ export default function App() {
     setGuessRounds(numOfRounds);
   };
 
-  let content = <StartGameScreen onStartGame={startGameHandler} />;
+  let content = (
+    <GameOverScreen
+      roundsNumber='2'
+      userNumber='3'
+      onRestart={configureNewGameHandler}
+    />
+  );
+  //let content = <StartGameScreen onStartGame={startGameHandler} />;
 
   if (userNumber && guessRounds <= 0) {
     content = <GameScreen userChoice={userNumber} onGameOver={gameOverHandler} />;
