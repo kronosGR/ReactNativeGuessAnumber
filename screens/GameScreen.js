@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import NumberContainer from '../components/NumberContainer';
 import Card from '../components/Card';
 import defaultStyle from '../constants/default-style';
+import MainButton from '../components/MainButton';
 
 const generateRandomBetween = (min, max, exclude) => {
   min = Math.ceil(min);
@@ -64,8 +65,8 @@ const GameScreen = (props) => {
       <Text style={defaultStyle.title}>Opponent's Guess</Text>
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card style={styles.buttonsContainer}>
-        <Button title='LOWER' onPress={nextGuessHandler.bind(this, 'lower')} />
-        <Button title='GREATER' onPress={nextGuessHandler.bind(this, 'greater')} />
+        <MainButton onPress={nextGuessHandler.bind(this, 'lower')} >LOWER</MainButton>
+        <MainButton onPress={nextGuessHandler.bind(this, 'greater')}>GREATER</MainButton>
       </Card>
     </View>
   );
