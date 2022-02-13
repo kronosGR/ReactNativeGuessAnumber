@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Button, Alert } from 'react-native';
+import { StyleSheet, View, Text, Alert } from 'react-native';
 import { useState, useRef, useEffect } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { ScrollView } from 'react-native';
