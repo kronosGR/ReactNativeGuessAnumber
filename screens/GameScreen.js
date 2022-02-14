@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Alert } from 'react-native';
+import { StyleSheet, View, Text, Alert, Dimensions } from 'react-native';
 import { useState, useRef, useEffect } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { ScrollView } from 'react-native';
@@ -103,12 +103,12 @@ const styles = StyleSheet.create({
   buttonsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginTop: 20,
-    width: 300,
+    marginTop: Dimensions.get('window').height > 600 ? 20 : 5,
+    width: 400,
     maxWidth: '80%',
   },
   listContainer: {
-    width: '70%',
+    width: Dimensions.get('window').width >350 ? '60%' : "80%",
     flex: 1, // you need this for the android to scroll
   },
   list: {
