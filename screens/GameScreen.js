@@ -1,15 +1,12 @@
 import React from 'react';
-import { StyleSheet, View, Text, Alert, Dimensions } from 'react-native';
+import { StyleSheet, View, Text, Alert, Dimensions, FlatList } from 'react-native';
 import { useState, useRef, useEffect } from 'react';
 import { Ionicons } from '@expo/vector-icons';
-import { ScrollView } from 'react-native';
 
 import NumberContainer from '../components/NumberContainer';
 import Card from '../components/Card';
-import defaultStyle from '../constants/default-style';
 import MainButton from '../components/MainButton';
 import BodyText from '../components/BodyText';
-import { ScreenOrientation } from 'expo';
 
 const generateRandomBetween = (min, max, exclude) => {
   min = Math.ceil(min);
@@ -30,8 +27,6 @@ const renderListItem = (listLength, itemData) => (
 );
 
 const GameScreen = props => {
-
-  ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT)
 
   const initialGuess = generateRandomBetween(1, 100, props.userChoice);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
@@ -103,7 +98,7 @@ const GameScreen = props => {
   if (availableDeviceHeight < 500) {
     return (
       <View style={styles.screen}>
-        <Text style={DefaultStyles.title}>Opponent's Guess</Text>
+        <Text style={styles.title}>Opponent's Guess</Text>
         <View style={styles.controls}>
           <MainButton onPress={nextGuessHandler.bind(this, 'lower')}>
             <Ionicons name="md-remove" size={24} color="white" />
@@ -130,7 +125,7 @@ const GameScreen = props => {
 
   return (
     <View style={styles.screen}>
-      <Text style={DefaultStyles.title}>Opponent's Guess</Text>
+      <Text style={styles.title}>Opponent's Guess</Text>
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card style={styles.buttonContainer}>
         <MainButton onPress={nextGuessHandler.bind(this, 'lower')}>
